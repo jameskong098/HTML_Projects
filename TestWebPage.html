@@ -4,23 +4,34 @@
         <title> "Cross-Price Elasticity Calculator" </title>
     </head>
     <body>
-        <h1>Hello World</h1>
-        <form action="TestWebPage.html" method="GET">
-            <label> Enter Point A's Pe: </label>
-            <input type="text" name="A_Pe" placeholder="Pe">
-            <button type="submit"> Submit </button>
+     
+        <h1 style="text-align:center; margin:auto; width:400px; background-color: lightblue">Cross-Price Elasticity Calculator</h1>
 
-            <label> Enter Point A's Qe: </label>
-            <input type="text" name="A_Qe" placeholder="Qe">
-            <button type="submit"> Submit </button>
+        <p style="text-align:center">Made by James D. Kong - jameskong098@gmail.com</p>
+
+        <form action="TestWebPage.html" method="GET" style="margin: auto; width: 180px; background-color: lightblue; padding: 12px">
+            <label> Enter initial Pe: </label>
+            <input type="text" name="A_Pe" size= "5" placeholder="Pe">
+          
+
+            <label> Enter initial Qe: </label>
+            <input type="text" name="A_Qe" size= "5" placeholder="Qe">
+           
             
-            <label> Enter Point B's Pe: </label>
-            <input type="text" name="B_Pe" placeholder="Pe">
-            <button type="submit"> Submit </button>
+            <label> Enter new Pe: </label>
+            <input type="text" name="B_Pe" size= "5" placeholder="Pe">
+           
 
-            <label> Enter Point B's Qe: </label>
-            <input type="text" name="B_Qe" placeholder="Qe">
-            <button type="submit"> Submit </button>
+            <label> Enter new Qe: </label>
+            <input type="text" name="B_Qe" size= "5" placeholder="Qe">
+
+            <button type="submit">Submit</button>
         </form>
+        <script>
+            var A_Pe = document.getElementsByName('A_Pe')
+            var A_Qe = document.getElementsByName("A_Qe")
+            var B_Pe = document.getElementsByName('B_Pe')
+            var B_Qe = document.getElementsByName("B_Qe")
+        </script>
     </body>
 </html>
