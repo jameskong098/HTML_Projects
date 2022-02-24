@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> "Price Elasticity of Demand Calculator" </title>
+        <title>Price Elasticity of Demand Calculator</title>
     </head>
-    <body>
-     
-        <h1 style="text-align:center; margin: auto; width: 400px; background-color: lightblue">Price Elasticity of Demand Calculator</h1>
+    <body style="font-family:sans-serif">
+        <h1 style="text-align:center; margin: auto; width: 400px; background-color: lightblue; padding:5px">Price Elasticity of Demand Calculator</h1>
 
-        <p style="text-align:center; width: 400px; margin: auto; margin-top:10px">This calculator can calculate the price elasticity of demand and will tell you whether demand is elastic or inelastic. It uses the mid-point approach for the equation (change in quantity / change in price) * (average Price / average Quantity) </p>
+        <p style="text-align:center; width: 400px; margin: auto; margin-top:10px; margin-bottom: 20px">This calculator can calculate the price elasticity of demand and will tell you whether demand is elastic or inelastic. It uses the mid-point approach for the equation (change in quantity / change in price) * (average Price / average Quantity) </p>
 
-        <p style="text-align:center">Made by James D. Kong - jameskong098@gmail.com</p>
-
-        <div style="margin: auto; width: 183px; background-color: lightblue; padding: 12px"> 
+        <div style="margin: auto; width: 190px; background-color: lightblue; padding: 15px"> 
             <label for="A_Pe_num"> Enter initial Pe: </label>
-            <input type="number" name="A_Pe" id="A_Pe_num" style="margin: 11px; width: 45px" value="10" placeholder="10" required>
+            <input type="number" name="A_Pe" id="A_Pe_num" style="margin: 11px; width: 45px; position:relative; right:5px">
           
             <label for="A_Qe_num"> Enter initial Qe: </label>
-            <input type="number" name="A_Qe" id="A_Qe_num" style="margin: 11px; width: 45px" value="50" placeholder="50" required>
+            <input type="number" name="A_Qe" id="A_Qe_num" style="margin: 11px; width: 45px; position:relative; right:6px">
            
             <label for="B_Pe_num"> Enter new Pe: </label>
-            <input type="number" name="B_Pe" id="B_Pe_num" style="margin: 11px; width: 45px" value="20" placeholder="20" required>
+            <input type="number" name="B_Pe" id="B_Pe_num" style="margin: 11px; width: 45px; position:relative; left:3px">
            
             <label for="B_Qe_num"> Enter new Qe: </label>
-            <input type="number" name="B_Qe" id="B_Qe_num" style="margin: 11px; width: 45px" value="10" placeholder="10" required>
+            <input type="number" name="B_Qe" id="B_Qe_num" style="margin: 11px; width: 45px">
            
-            <button type="button" id="resetButton" style="margin: 5px">Reset</button>
-            <button type="button" id="calculateButton" style="margin: 5px">Calculate</button>
+            <button type="button" id="resetButton" style="margin: 5px; position:relative; left:6px; top:5px; width:70px; height:20px">Reset</button>
+            <button type="button" id="calculateButton" style="margin: 5px; position:relative; left:21px; top:4px; width:70px; height:20px">Calculate</button>
         </div>
 
         <p style="text-align:center">Results</p>
 
-        <div style="margin: auto; width: 300px; height: 100px; background-color: lightblue; padding: 25px; text-align:center">
+        <div style="margin: auto; width: 315px; height: 100px; background-color: lightblue; padding: 25px; text-align:center; font-size:15px">
             <p id="output" style="position:relative; bottom:24px">Between the initial Pe/Qe and the new Pe/Qe, the quantity demanded changes by __ per 1% change in price, all else constant.</p>
             <p id="output2" style="position:relative; bottom:20px">Demand is more ______ and quantity changes ____ than proportionally in relation to price.</p>
         </div>
 
         <script> 
             document.getElementById("resetButton").addEventListener("click", reset)
-            document.getElementById("calculateButton").addEventListener("click", calculate)
+            document.getElementById("calculateButton").addEventListener("click", validate)
+
+            function validate(buttonId) {
+                if (buttonId = "calculateButton") {
+                    if (document.getElementsByName('A_Pe')[0].value != "" && document.getElementsByName("A_Qe")[0].value != "" && document.getElementsByName('B_Pe')[0].value != "" &&  document.getElementsByName("B_Qe")[0].value != "") {
+                        calculate()
+                    }
+                }
+            }
 
             function calculate() {
                 var A_Pe = parseFloat(document.getElementsByName('A_Pe')[0].value)
@@ -48,7 +53,7 @@
                 var changeInPe = B_Pe - A_Pe
                 var avgPe = (A_Pe + B_Pe) / 2
                 var avgQe = (A_Qe + B_Qe) / 2
-                var finalCalc = -1 * (changeInQe / changeInPe) * (avgPe / avgQe)
+                var finalCalc = Math.round((-1 * (changeInQe / changeInPe) * (avgPe / avgQe)) * 100) / 100
                 var output = "Between the initial Pe/Qe and the new Pe/Qe, the quantity demanded changes by " + finalCalc + "% per 1% change in price, all else constant."
                 var elasticStatus = ""
                 if (finalCalc > 1) {
@@ -71,6 +76,8 @@
             }
 
         </script>
+
+        <p style="text-align:center">Made by James D. Kong - jameskong098@gmail.com</p>
 
     </body>
 </html>
