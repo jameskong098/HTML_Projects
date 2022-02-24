@@ -36,11 +36,9 @@
             document.getElementById("resetButton").addEventListener("click", reset)
             document.getElementById("calculateButton").addEventListener("click", validate)
 
-            function validate(buttonId) {
-                if (buttonId = "calculateButton") {
-                    if (document.getElementsByName('A_Pe')[0].value != "" && document.getElementsByName("A_Qe")[0].value != "" && document.getElementsByName('B_Pe')[0].value != "" &&  document.getElementsByName("B_Qe")[0].value != "") {
-                        calculate()
-                    }
+            function validate() {
+                if (document.getElementsByName('A_Pe')[0].value != "" && document.getElementsByName("A_Qe")[0].value != "" && document.getElementsByName('B_Pe')[0].value != "" &&  document.getElementsByName("B_Qe")[0].value != "") {
+                    calculate()
                 }
             }
 
@@ -61,6 +59,14 @@
                 }
                 else if (finalCalc < 1) {
                     elasticStatus = "Demand is more inelastic and quantity changes less than proportionally in relation to price."
+                }
+                else if (finalCalc == 1) {
+                    elasticStatus = "Demand is unitary and quantity changes at the same proportion in relation to price."
+                }
+                else {
+                    document.getElementById("output").innerHTML = "Error: Divide By Zero Error!"
+                    document.getElementById("output2").innerHTML = ""
+                    return
                 }
                 document.getElementById("output").innerHTML = output
                 document.getElementById("output2").innerHTML = elasticStatus
